@@ -25,12 +25,19 @@ h1 {
 
 .nav-bar {
   padding: 10px;
+  display: flex;
+  list-style: none;
+  
 }
 
-nav > ul {
+nav  ul {
   display : flex;
   gap : 200px;
-  list-style: none;
+}
+
+.nav-left {
+  display: flex;
+  justify-content: right;
 }
 
 nav > ul > li > a {
