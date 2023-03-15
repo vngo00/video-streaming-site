@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
     <title>registration</title>
 </head>
 
 <body>
-    <header>
+    <header class="site-header">
         <h1>Welcome to upipe</h1>
     
     
-        <nav>
+        <nav class="nav-bar">
             <ul>
                 <li><a href="index.html">Upipe</a></li>
                 <li><a href="login.html">login</a></li>
@@ -26,30 +27,38 @@
     <main>
         <h2> User registration</h2>
         <form >
-            <label for="username">UserName: </label>
-            <input type="text" placeholder="Enter Username" name="username" required>
-            <br>
-            <label for="email">Email: </label>
-            <input type="email" placeholder="Enter email" name="email" required>
-            <br>
-            <label for="password">Password</label>
-            <input type="password"  placeholder="Enter Password" name="password" id="" required>
-            <br>
-            <label for="cpassword">Confirm Password</label>
-            <input type="password"  placeholder="Reenter Password" name="cpassword" id="" required>
-            <br>
-            <input type="checkbox" name="age">
-            <label for="">I am 13 or older</label>
-            <br>
-            <input type="checkbox" name="policies">
-            <label for="">I agree with <a href="">TOS and Privacy rules</a></label>
-            <br>
-            <button type="submit">Sign up</button>
+            <div class="input-group">
+                <label for="username">UserName: </label>
+                <input class="input-text" type="text" placeholder="Enter Username" name="username" required>
+            </div>
+            <div class="input-group">
+                <label for="email">Email: </label>
+                <input class="input-text" type="email" placeholder="Enter email" name="email" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input class="input-text" type="password"  placeholder="Enter Password" name="password" id="" required>
+            </div>
+            <div class="input-group">
+                <label for="cpassword">Confirm Password</label>
+                <input class="input-text" type="password"  placeholder="Reenter Password" name="cpassword" id="" required>
+            </div>
+            <div class="checkbox-group">
+                <input type="checkbox" name="age">
+                <label for="">I am 13 or older</label>
+            </div>
+            <div class="checkbox-group">
+                <input type="checkbox" name="policies">
+                <label for="">I agree with <a href="">TOS and Privacy rules</a></label>
+            </div>
+            <div>
+                <button class="submit-button" type="submit">Sign up</button>
+            </div>
 
         </form>
     </main>
 
 </body>
 
-<footer>upipe &copy;</footer>
+<footer class="site-footer">upipe &copy; 2023</footer>
 </html>

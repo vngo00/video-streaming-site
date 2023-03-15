@@ -1,8 +1,87 @@
+html {
+  font-size: 100%;
+}
+
 body {
-  padding: 50px;
+  padding: 10px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin: 0;
+  
+}
+
+.site-header {
+  background-color:#0F1111;
 }
 
 a {
   color: #00B7FF;
+  text-decoration: none;
+}
+
+h1 {
+  margin-bottom: 0;
+  color: white;
+}
+
+.nav-bar {
+  padding: 10px;
+}
+
+nav > ul {
+  display : flex;
+  gap : 200px;
+  list-style: none;
+}
+
+nav > ul > li > a {
+  font-size: 1.5rem;
+}
+
+main > h2 {
+  text-align: center;
+}
+
+form{
+  padding-left: 350px;
+  
+  display: grid;
+  grid-auto-flow: row;
+  width: 50%;
+  gap: 5px;
+  
+}
+
+.input-text{
+  padding:2px 4px;
+  border-radius:.35rem;
+}
+
+.input-group{
+  display:flex;
+  flex-direction: column;
+}
+
+
+.submit-button {
+  background-color: #00B7FF;
+  color: white;
+  border: none;
+  border-radius: .45rem;
+  font-size: 20px;
+}
+
+.submit-button:hover {
+  font-size: 40px;
+  background-color: rgb(208, 109, 17);
+}
+
+
+
+.site-footer {
+  color: beige;
+  background-color: rgb(60, 184, 237);
+  text-align: center;
+  padding: 12px;
+  font-size: 1.5rem;
+  margin-top: 300px;
 }
