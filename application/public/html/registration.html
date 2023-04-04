@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
+    <script defer src="../js/formValidation.js"></script>
     <title>registration</title>
 </head>
 
@@ -27,10 +28,10 @@
 
     <main>
         <h2> User registration</h2>
-        <form >
+        <form id="reg-form">
             <div class="input-group">
                 <label for="username">UserName: </label>
-                <input class="input-text" type="text" placeholder="Enter Username" name="username" required>
+                <input class="input-text" id="userName" type="text" placeholder="Enter Username" name="username" required>
             </div>
             <div class="input-group">
                 <label for="email">Email: </label>
@@ -38,7 +39,7 @@
             </div>
             <div class="input-group">
                 <label for="password">Password</label>
-                <input class="input-text" type="password"  placeholder="Enter Password" name="password" id="" required>
+                <input class="input-text" id="reg-password"type="password"  placeholder="Enter Password" name="password" id="" required>
             </div>
             <div class="input-group">
                 <label for="cpassword">Confirm Password</label>
