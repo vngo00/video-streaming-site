@@ -114,3 +114,17 @@ form{
 .invalid-text {
   outline: solid red;
 }
+
+
+.req-username {
+  
+  display: none;
+}
+
+.req-pass {
+  display: none;
+}
+
+.confirm-pass{
+  display:none;
+}
