@@ -1,48 +1,6 @@
 var url = 'https://dummyjson.com/products'
 
-async function fetchWithString() {
-    try{
-        // fetch(url, {
-        //     method: "POST",
-        //     headers: {
-        //         "content-Type": "application/json"
-        //     },
-        //     body: JSON.stringify({
-        //         name:"tony",
-        //         id:1231231
 
-        //     }),
-        // }) 
-
-        var response = await fetch(url);
-        
-
-        var data = await response.json();
-        var htmlString = data.products.reduce(function(prev, product){
-            return (prev + `<div id="product-list" class="product-list">
-            <div class="product-card">
-                <img class="product-img" src="${product.thumbnail}">
-                <div class="product-info">
-                    <p class="product-title">${product.title}</p>
-                    <p class="product-cost">${product.cost}</p>
-                </div>
-            </div>
-        </div>`);
-        }, "");
-        
-        document.getElementById('product-list').innerHTML = htmlString;
-        let cards= document.getElementsByClassName('product-card');
-        [...cards].forEach(function(e) {
-            e.addEventListener('click', function(ev){
-                let x= e.getElementsByClassName('product-title');
-                console.log(e.innerHTML);
-            });
-        });
-    }
-     catch(error) {
-        console.log(error)
-     }
-}
 
 /**
  * `<div id="product-list" class="product-list">
@@ -118,5 +76,6 @@ async function fetchWithDOMAPI(){
         console.log(err);
     }
 }
-//fetchWithString();
+
+
 fetchWithDOMAPI();
