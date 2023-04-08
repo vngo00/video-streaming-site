@@ -128,3 +128,16 @@ form{
 .confirm-pass{
   display:none;
 }
+
+
+.product-list{
+  display:grid;
+}
+
+
+
+.product-img {
+  height:100%;
+  width:100%;
+   
+}

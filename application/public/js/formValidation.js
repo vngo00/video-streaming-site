@@ -1,14 +1,20 @@
-// function validateUserName(userName){
-//     var format = /^[a-zA-Z]/
-//         if (format.test(userName)){
-//             document.querySelector("div > p > img").src = "../css/images/check\ icon.png"
-//             if (userName.length >= 3) {
-//                 document.querySelector("div > p > img").src = "../css/images/check\ icon.png"
-//                 return true;
-//             }
-//         }
-//     return false;
-// }
+function validateUserName(userName){
+    var format = /^[a-zA-Z]/
+        if (format.test(userName)){
+            document.querySelector("div > p > img.first").src = "../css/images/check\ icon.png"
+            if (userName.length >= 3) {
+                document.querySelector("div > p > img.second").src = "../css/images/check\ icon.png"
+                return true;
+            } else {
+                document.querySelector("div > p > img.second").src = "../css/images/cross\ icon.png"
+            }
+        } else{
+            document.querySelector("div > p > img.first").src = "../css/images/cross\ icon.png"
+            return false;
+        }
+        
+    return false;
+}
 
 var validPasssword = false;
 var validConfirmPass = false;
@@ -37,35 +43,41 @@ document.getElementById('userName').addEventListener('focusin', (ev) => {
     document.getElementsByClassName('req-username')[0].style.display = "block";
 })
 document.getElementById('userName').addEventListener('input', (ev) => {
-    
-    document.getElementsByClassName('req-username')[0].style.display = "block";
     let userInput = ev.currentTarget
     let username = userInput.value
-    
-    var format = /^[a-zA-Z]/
-    if (format.test(username)){
-        document.querySelector("div > p > img.first").src = "../css/images/check\ icon.png"
-        if (username.length >= 3) {
-            document.querySelector("div > p > img.second").src = "../css/images/check\ icon.png"
 
-            userInput.classList.add("class", "valid-text");
-            userInput.classList.remove("class", "invalid-text");
-            validUsername = true;
-        }
-        else{
-            document.querySelector("div > p > img.second").src = "../css/images/cross\ icon.png"
-        }
-
-    }
-    else{
-        validUsername = false;
-        document.querySelector("div > p > img.first").src = "../css/images/cross\ icon.png"
-       
+    if (validateUserName(username)){
+        userInput.classList.add("class", "valid-text");
+        userInput.classList.remove("class", "invalid-text");
+        validUsername = true;
+    } else {
         userInput.classList.remove("class", "valid-text");
         userInput.classList.add("class", "invalid-text");
+        validUsername = false;
     }
     
-    
+    // var format = /^[a-zA-Z]/
+    // if (format.test(username)){
+    //     document.querySelector("div > p > img.first").src = "../css/images/check\ icon.png"
+    //     if (username.length >= 3) {
+    //         document.querySelector("div > p > img.second").src = "../css/images/check\ icon.png"
+
+            // userInput.classList.add("class", "valid-text");
+            // userInput.classList.remove("class", "invalid-text");
+            // validUsername = true;
+    //     }
+    //     else{
+    //         document.querySelector("div > p > img.second").src = "../css/images/cross\ icon.png"
+    //     }
+
+    // }
+    // else{
+    //     validUsername = false;
+    //     document.querySelector("div > p > img.first").src = "../css/images/cross\ icon.png"
+       
+    //     userInput.classList.remove("class", "valid-text");
+    //     userInput.classList.add("class", "invalid-text");
+    // }
 })
 
 // password checking
