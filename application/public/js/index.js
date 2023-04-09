@@ -1,5 +1,5 @@
-var url = 'https://jsonplaceholder.typicode.com/albums/2/photos'
-
+var url = 'https://jsonplaceholder.typicode.com/albums/2/photos';
+var photoCounts = 0;
 
 
 /**
@@ -20,6 +20,8 @@ var url = 'https://jsonplaceholder.typicode.com/albums/2/photos'
             ele.style.opacity = 0;
             let timer = setInterval(function () {
                 ele.remove();
+                photoCounts--;
+                document.getElementsByClassName('product-number')[0].innerHTML = photoCounts;
                 clearInterval(timer);
             }, 500);
             //console.log(ev.currentTarget);
@@ -64,7 +66,9 @@ async function fetchWithDOMAPI(){
         var response = await fetch(url);
         var data = await response.json();
         var elements = data.map(buildCard);
+        photoCounts = elements.length;
         document.getElementById('product-list').append(...elements);
+        document.getElementsByClassName('product-number')[0].innerHTML = photoCounts;
     }
     catch(err){
         console.log(err);
