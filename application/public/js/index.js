@@ -13,20 +13,19 @@ var photoCounts = 0;
             </div>
         </div>`
  */
-        function fadeOut(ev){
-            var ele = ev.currentTarget;
-        
-            ele.style.transition = 'opacity .5s';
-            ele.style.opacity = 0;
-            let timer = setInterval(function () {
-                ele.remove();
-                photoCounts--;
-                document.getElementsByClassName('product-number')[0].innerHTML = photoCounts;
-                clearInterval(timer);
-            }, 500);
-            //console.log(ev.currentTarget);
-        
-        }
+function fadeOut(ev){
+    var ele = ev.currentTarget;
+
+    ele.style.transition = 'opacity .5s';
+    ele.style.opacity = 0;
+    let timer = setInterval(function () {
+        ele.remove();
+        photoCounts--;
+        document.getElementsByClassName('product-number')[0].innerHTML = photoCounts;
+        clearInterval(timer);
+    }, 500);
+    
+}
 
 function makeElement(type, attr, src, children){
     var e = document.createElement(type);
