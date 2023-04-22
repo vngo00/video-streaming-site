@@ -62,13 +62,16 @@ main > h2 {
 }
 
 form{
-  padding-left: 350px;
-  
   display: grid;
   grid-auto-flow: row;
   width: 50%;
   gap: 5px;
   
+}
+
+.center-form {
+  justify-content: center;
+  display:flex;
 }
 
 .input-text{
@@ -135,6 +138,10 @@ div img {
   width: 100%;
 }
 
+p img {
+  height:5%;
+  width:5%;
+}
 
 .product-list{
   display:grid;

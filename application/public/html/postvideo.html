@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- MDB -->
+    <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css"
+    rel="stylesheet"
+    />
     <link rel="stylesheet" href="../css/style.css">
     <title>Upipe</title>
 </head>
@@ -11,10 +16,11 @@
 <body>
 
     <header class="site-header">
-        <h1>Welcome to upipe</h1>
-
-   
-        <nav class="nav-bar">  
+        
+       
+    
+        <nav class="nav-bar">
+            
             <a href="index.html">Upipe</a>
             <a href="postvideo.html">postvideo</a>
             <div class="nav-bar-right dropdown">
@@ -22,29 +28,34 @@
                     <a href="login.html">login</a>
                     <a href="viewpost.html">viewpost</a>
                     <a href="profile.html">profile</a>
-            </div>  
+            </div>        
         </nav>
-    
     </header>
 
     <main>
-        <h2>Upload your video here</h2>
-        <form >
-            <label for="">Post Title</label>
-            <input type="text" placeholder="Post Title">
-            <br>
-            <label for="Description">Post Description</label>
-            <textarea name="Description" id="Description" cols="20" rows="10" placeholder="Post Description"></textarea>
-            <br>
-            <label for="">Upload Video</label>
-            <input type="file" accept="video/*" >
-            <br>
-            <input type="checkbox" name="video">
-            <label for="">I agree with <a href="">Aceptable Use Policy</a></label>
-            <br>
-            <button type="submit">Sign up</button>
-
-        </form>
+        <div class="center-form">
+            <form >
+                <h2>Upload your video here</h2>
+                <div>
+                    <label for="">Post Title</label>
+                    <input type="text" placeholder="Post Title">
+                </div>
+                <div>
+                    <textarea name="Description" id="Description" cols="20" rows="10" placeholder="Post Description"></textarea>
+                </div>
+                <div>
+                    <label for="">Upload Video</label>
+                    <input type="file" accept="video/*" >
+                </div>
+                <div>
+                    <input type="checkbox" name="video">
+                    <label for="">I agree with <a href="">Aceptable Use Policy</a></label>
+                </div>
+                <div>
+                    <button class="submit-button" type="submit">Sign up</button>
+                </div>
+            </form>
+        </div>
     </main>
 
     <footer class="site-footer">upipe &copy;</footer>
