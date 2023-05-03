@@ -1,15 +1,15 @@
 function validateUserName(userName){
     var format = /^[a-zA-Z]/
         if (format.test(userName)){
-            document.querySelector("div > p > img.first").src = "../css/images/check\ icon.png"
+            document.querySelector("div > p > img.first").src = "/public/css/images/check\ icon.png"
             if (userName.length >= 3) {
-                document.querySelector("div > p > img.second").src = "../css/images/check\ icon.png"
+                document.querySelector("div > p > img.second").src = "/public/css/images/check\ icon.png"
                 return true;
             } else {
-                document.querySelector("div > p > img.second").src = "../css/images/cross\ icon.png"
+                document.querySelector("div > p > img.second").src = "/public/css/images/cross\ icon.png"
             }
         } else{
-            document.querySelector("div > p > img.first").src = "../css/images/cross\ icon.png"
+            document.querySelector("div > p > img.first").src = "/public/css/images/cross\ icon.png"
             return false;
         }
         
@@ -97,27 +97,27 @@ document.getElementById('reg-password').addEventListener('input', (ev) => {
 
     
     if (upperCase.test(password)){
-        document.querySelector("div.req-pass > p > img.first").src = "../css/images/check\ icon.png"
+        document.querySelector("div.req-pass > p > img.first").src = "/public/css/images/check\ icon.png"
     } else {
-        document.querySelector("div.req-pass > p > img.first").src = "../css/images/cross\ icon.png"
+        document.querySelector("div.req-pass > p > img.first").src = "/public/css/images/cross\ icon.png"
     }
     
     if (numbers.test(password)){
-        document.querySelector("div.req-pass > p > img.second").src = "../css/images/check\ icon.png"
+        document.querySelector("div.req-pass > p > img.second").src = "/public/css/images/check\ icon.png"
     } else {
-        document.querySelector("div.req-pass > p > img.second").src = "../css/images/cross\ icon.png"
+        document.querySelector("div.req-pass > p > img.second").src = "/public/css/images/cross\ icon.png"
     }
 
     if (specialChars.test(password)){
-        document.querySelector("div.req-pass > p > img.third").src = "../css/images/check\ icon.png"
+        document.querySelector("div.req-pass > p > img.third").src = "/public/css/images/check\ icon.png"
     } else {
-        document.querySelector("div.req-pass > p > img.third").src = "../css/images/cross\ icon.png"
+        document.querySelector("div.req-pass > p > img.third").src = "/public/css/images/cross\ icon.png"
     }
 
     if (password.length >= 8){
-        document.querySelector("div.req-pass > p > img.fourth").src = "../css/images/check\ icon.png"
+        document.querySelector("div.req-pass > p > img.fourth").src = "/public/css/images/check\ icon.png"
     } else {
-        document.querySelector("div.req-pass > p > img.fourth").src = "../css/images/cross\ icon.png"
+        document.querySelector("div.req-pass > p > img.fourth").src = "/public/css/images/cross\ icon.png"
     }
 
     if(validatePassword(password)) {
@@ -148,12 +148,12 @@ document.getElementById('conf-pass').addEventListener('input', (ev) => {
     console.log(document.getElementById('reg-password').value);
     let password = document.getElementById('reg-password').value;
     if (conPassword == password){
-        document.querySelector("div.confirm-pass > p > img.first").src = "../css/images/check\ icon.png"
+        document.querySelector("div.confirm-pass > p > img.first").src = "/public/css/images/check\ icon.png"
         conPassInput.classList.add("class", "valid-text");
         conPassInput.classList.remove("class", "invalid-text");
         validConfirmPass = true;
     } else {
-        document.querySelector("div.confirm-pass > p > img.first").src = "../css/images/cross\ icon.png"
+        document.querySelector("div.confirm-pass > p > img.first").src = "/public/css/images/cross\ icon.png"
         conPassInput.classList.remove("class", "valid-text");
         conPassInput.classList.add("class", "invalid-text");
         validConfirmPass = true;

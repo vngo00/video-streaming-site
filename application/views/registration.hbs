@@ -1,7 +1,9 @@
 
     <main>
         <div class="center-form">
-            <form id="reg-form">
+            <form id="reg-form" action="/users/register"
+            method="POST"
+            enctype="application/x-www-form-urlencoded">
                 <h2> User registration</h2>
                 <div class="input-group">
                     <label for="username">UserName: </label>
@@ -28,18 +30,18 @@
                 </div>
                 <div class="input-group">
                     <label for="cpassword">Confirm Password</label>
-                    <input class="input-text" id="conf-pass"type="password"  placeholder="Reenter Password" name="cpassword" id="" required>
+                    <input class="input-text" id="conf-pass"type="password"  placeholder="Reenter Password" name="confirm_password" id="" required>
                     <div class="confirm-pass">
                         <p><img class="first"src="/public/css/images/cross icon.png"> password matches</p>
                     </div>
                     
                 </div>
                 <div class="checkbox-group">
-                    <input type="checkbox" name="age" required>
+                    <input type="checkbox" name="ageCheck" required>
                     <label for="">I am 13 or older</label>
                 </div>
                 <div class="checkbox-group">
-                    <input type="checkbox" name="policies" required>
+                    <input type="checkbox" name="tosCheck" required>
                     <label for="">I agree with <a href="">TOS and Privacy rules</a></label>
                 </div>
                 <div>
