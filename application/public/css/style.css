@@ -168,3 +168,14 @@ p img {
  display: grid;
 
 }
+
+
+
+#flash-message {
+  display : block;
+  transition: display 2s;
+}
+
+#flash-message::content {
+  display: none;
+}

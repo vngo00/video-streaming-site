@@ -16,16 +16,15 @@ router.get('/registration', async function(req, res){
   // res.render('registration', {title:'registration', js:["formValidation.js"]});
   res.render('registration');
 });
-router.get('/profile', function(req, res){
-  res.render('profile', {title:'profile'});
+
+router.get('/postvideo', function(req, res){
+  res.render('postvideo', {title:'postvideo'});
 });
 
 router.get('/viewpost', function(req, res){
   res.render('viewpost', {title:'viewpost'});
 });
-router.get('/postvideo', function(req, res){
-  res.render('postvideo', {title:'postvideo'});
-});
+
 
 
 module.exports = router;
