@@ -12,13 +12,14 @@
                                 <button type="submit">log out</button></form>
                                 
                                 
-                                <a href="/users/profile">profile</a>
+                                <a href="/users/profile/{{user.userId}}">profile</a>
                         {{else}}
-                                
+                                 
                                 <a href="registration">registration</a>
                                 <a href="login">login</a>
                         {{/if}}
-                        <a href="viewpost">viewpost</a>
+                        
+                        <a href="/viewpost">viewpost</a>
                         
                         
                 </div>

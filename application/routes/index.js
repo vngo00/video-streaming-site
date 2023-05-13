@@ -13,16 +13,15 @@ router.get('/login', async function(req, res) {
 });
 
 router.get('/registration', async function(req, res){
-  // res.render('registration', {title:'registration', js:["formValidation.js"]});
-  res.render('registration');
+  res.render('registration', {title:'registration', js:["formValidation.js"]});
 });
 
 router.get('/postvideo', function(req, res){
   res.render('postvideo', {title:'postvideo'});
 });
 
-router.get('/viewpost', function(req, res){
-  res.render('viewpost', {title:'viewpost'});
+router.get('/viewpost/:id(\\d+)', function(req, res){
+  res.render('viewpost', {title:`View Post ${req.params.id}`});
 });
 
 
