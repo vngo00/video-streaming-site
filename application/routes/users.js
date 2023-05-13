@@ -13,26 +13,22 @@ var {usernameCheck,
     createUser
   } = require("../middleware/validation");
 
-
-
 /* GET localhost:3000/users. */
 router.get('/', async function(req, res, next) {
   res.redirect('/');
 });
-
-
-
-
-//login user
+/**
+ * login
+ */
 router.post('/login',checkLogin, async function(req, res, next){
   req.session.save(function(err){
       if(err) next(err);
       return res.redirect('/');
   });
 });
-
-
-
+/**
+ * registration 
+ */
 router.post('/register',usernameCheck,
  passwordCheck,
  emailCheck,
@@ -44,20 +40,15 @@ router.post('/register',usernameCheck,
   function(req, res, next){
   return res.redirect('/login');
 });
-
-router.use(function(req, res, next){
-  if(req.session.user){
-    next();
-  }
-  else {
-    return res.redirect('/login');
-  }
-})
-
+/**
+ * viewing profile
+ */
 router.get('/profile/:id(\\d+)',isLoggedIn,isMyProfile, function(req, res){
   res.render('profile', {title:'profile'});
 });
-
+/**
+ * logout
+ */
 router.post("/logout", async function(req, res, next){
   req.session.destroy(function(err){
     if(err) {
@@ -70,10 +61,5 @@ router.post("/logout", async function(req, res, next){
   
 
 });
-
-
-
-
-
 
 module.exports = router;
