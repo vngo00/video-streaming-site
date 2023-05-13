@@ -168,9 +168,54 @@ p img {
  display: grid;
 
 }
+.profile-list{
+  display:grid;
+  padding:10px;
+  gap:10px;
+  grid-auto-rows: minmax(200px, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+}
 
+.user-card {
+  display:grid;
+  grid-template-rows: 80% 20%;
+  grid-template-areas: 
+  "image info";
+}
 
+.user-info {
+  grid-area: info;
+  display: grid;
+  grid-template-areas: 
+  "username username"
+  "email email";
+}
+.user-username {
+  grid-area: username;
+}
+.user-email {
+  grid-area: email;
+}
 
+.profile-card {
+  display:grid;
+  grid-template-rows: 80% 20%;
+  grid-template-areas: 
+  "image image"
+  "edit delete";
+}
+
+.profile-img {
+  grid-area: image;
+}
+.profile-edit {
+  grid-area: edit;
+}
+.profile-delete {
+  grid-area : delete;
+}
+
+ 
 #flash-message {
   display : block;
   transition: display 2s;
