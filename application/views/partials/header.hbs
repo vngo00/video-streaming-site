@@ -1,27 +1,50 @@
-<header class="site-header">
-            <nav class="nav-bar">
-            
-                <a href="/">Upipe</a>
-                <a href="/postvideo">postvideo</a>
-                
-                <div class="nav-bar-right dropdown">
-                        
+<header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+                <a class="navbar-brand" href="/">Upipe</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+              
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                      <a class="nav-link" href="/postvideo">postvideo</a>
+                    </li>
+                    <li class="nav-item active">
+                      <a class="nav-link" href="/viewpost">viewPost</a>
+                    </li>
+                    
+                  </ul>
+                  <form class="form-inline">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-light btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                  </form>
+                  <ul class="navbar-nav ">
+                  <li class="nav-item dropdown">
                         {{#if isLoggedIn}}
-                                <form action="/users/logout" method="POST">
+                      <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        User: {{user.username}}
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/users/profile/{{user.userId}}">Profile</a>
+                        <form action="/users/logout" method="POST">
                                 <input type="hidden" value="{{csrf}}">
-                                <button type="submit">log out</button></form>
-                                
-                                
-                                <a href="/users/profile/{{user.userId}}">profile</a>
+                                <button class="btn btn-danger" type="submit">log out</button></button>
+                        </form>
+                      </div>
                         {{else}}
-                                 
-                                <a href="registration">registration</a>
-                                <a href="login">login</a>
-                        {{/if}}
-                        
-                        <a href="/viewpost">viewpost</a>
-                        
-                        
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Account
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/login">Log In</a>
+                        <a class="dropdown-item" href="/registration">registration</a>
+                      </div>
+                      {{/if}}
+                    </li>
+                    </ul>
                 </div>
-        </nav>
-        </header>
+              </nav>
+
+
+</header>
