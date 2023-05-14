@@ -1,10 +1,12 @@
 var express = require('express');
 var router = express.Router();
-
+const {getRecentPosts} = require('../middleware/posts');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Upipe', name:"[Insert your name here]" , js:["index.js"]});
+router.get('/', getRecentPosts, function(req, res, next) {
+  console.log(res.locals.posts);
+ // res.render('index', { title: 'Upipe', name:"[Insert your name here]" , js:["index.js"]});
+  res.render('index', {title:'Upipe'});
 });
 
 

@@ -93,7 +93,24 @@ module.exports = {
         }
     },
     getCommentsForPostById: function(req,res,next){},
-    getRecentPosts: function(req,res,next){
+    getRecentPosts: async function(req,res,next){
+
+        try{
+        [rows, fields] = await db.execute(
+            `SELECT * FROM posts ORDER BY createdAt DESC LIMIT 50`
+        );
+        if (rows && rows.length){
+            res.locals.posts = rows;
+            req.session.save(function(err){
+                if (err) next(err);
+                next();
+            });
+        } else{
+            new Error("Unable to retrieve posts");
+        }
+        } catch(error){
+            next(error);
+        }
 
     },
     deletePostbyId: async function(req,res,next){

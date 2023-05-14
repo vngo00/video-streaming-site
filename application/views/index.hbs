@@ -1,6 +1,11 @@
 <main>
     <p>photos display: <p class="product-number"></p></p>
     <div id="product-list" class="product-list">
+        {{#if posts}}
+            {{#each posts}}
+                {{> card this}}
+            {{/each}}
+        {{/if}}
     </div>
 </main>
         
