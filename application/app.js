@@ -67,6 +67,7 @@ app.use(function(req, res, next){
   if (req.session.user){
     res.locals.isLoggedIn = true,
     res.locals.user = req.session.user;
+    res.locals.array = [req.session.user,req.session.user];
   }
   next();
 });

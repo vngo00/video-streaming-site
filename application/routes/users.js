@@ -2,8 +2,8 @@ var express = require('express');
 var router = express.Router();
 var db = require('../conf/database');
 var bcrypt = require('bcrypt');
-var {isLoggedIn, isMyProfile, checkLogin} = require("../middleware/auth");
-var {usernameCheck,
+const {isLoggedIn, isMyProfile, checkLogin} = require("../middleware/auth");
+const {usernameCheck,
     passwordCheck,
     emailCheck,
     tosCheck,
@@ -12,6 +12,7 @@ var {usernameCheck,
     isEmailUnique,
     createUser
   } = require("../middleware/validation");
+const {getPostsForUserById} = require('../middleware/posts');
 
 /* GET localhost:3000/users. */
 router.get('/', async function(req, res, next) {
@@ -43,7 +44,8 @@ router.post('/register',usernameCheck,
 /**
  * viewing profile
  */
-router.get('/profile/:id(\\d+)',isLoggedIn,isMyProfile, function(req, res){
+router.get('/profile/:id(\\d+)',isLoggedIn,isMyProfile,getPostsForUserById, function(req, res){
+  //console.log(res.locals.userPosts);
   res.render('profile', {title:'profile'});
 });
 /**

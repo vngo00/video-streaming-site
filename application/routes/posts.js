@@ -2,7 +2,9 @@ var express = require('express');
 var router = express.Router();
 var multer = require('multer');
 var db = require('../conf/database');
-const { makeThumbnail } = require('../middleware/posts');
+const { makeThumbnail,
+     getPostById,
+     deletePostbyId } = require('../middleware/posts');
 const { isLoggedIn } = require('../middleware/auth');
 
 const storage = multer.diskStorage({
@@ -49,18 +51,22 @@ router.post(
 
 });
 
-router.get('/:id(\\d+)', function(req, res){
+router.get('/:id(\\d+)',getPostById, function(req, res){
+    console.log(req.params);
+    console.log(res.locals.currentPost);
     res.render('viewpost', {title:`View Post ${req.params.id}`});
 });
 
+router.post('/delete',isLoggedIn,deletePostbyId, function(req,res,next){
+    var {userId} = req.session.user;
+    return res.redirect(`/users/profile/${userId}`);
+});
 router.get('/search', function(req,res,next){
 
 });
 
 
-router.delete('/delete', function(req,res,next){
 
-});
   
 
 

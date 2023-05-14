@@ -1,6 +1,7 @@
 var pathToFFMPEG = require('ffmpeg-static');
 var exec = require('child_process').exec;
-const ffmpeg = require('fluent-ffmpeg');
+var ffmpeg = require('fluent-ffmpeg');
+var db = require('../conf/database');
 
 
 module.exports = {
@@ -52,8 +53,66 @@ module.exports = {
             });
                 }
         },
-    getPostsForUserBy: function(req,res,next){},
-    getPostById: function(req,res,next){},
+    getPostsForUserById: async function(req,res,next){
+        var {userId} = req.session.user;
+
+        try{
+            [rows, fields] = await db.execute(
+                `SELECT * FROM posts where fk_userId=?`,[userId]
+            );
+            if (rows){
+                res.locals.userPosts = rows;
+                next();
+            }
+            else{
+                new Error("User Posts coud not be retrieved.");
+            }
+            
+        }
+        catch (error) {
+            next(error);
+        }
+    },
+    getPostById: async function(req,res,next){
+        var {id} = req.params;
+
+        try{
+
+            [rows, fields] = await db.execute(
+                `SELECT * FROM posts WHERE id=?`,[id]
+                );
+                if (rows && rows.length){
+                    res.locals.currentPost = rows[0];
+                    next();
+                }
+                else {
+                    new Error("Post could not be retrieved.");
+                }
+        } catch(error){
+            next(error)
+        }
+    },
     getCommentsForPostById: function(req,res,next){},
-    getRecentPosts: function(req,res,next){}
+    getRecentPosts: function(req,res,next){
+
+    },
+    deletePostbyId: async function(req,res,next){
+        var {id} = req.body;
+        try{
+            [rows, fields] = await db.execute(
+                `DELETE FROM posts where id=?`,[id]
+            );
+            if(rows && rows.affectedRows){
+                req.session.save(function(error){
+                    if (error) next(error);
+                    next();
+                    
+                });
+            }else{
+                new Error("Unable to delete post");
+            }
+        } catch(error){
+            next(error);
+        }
+    }
 }

@@ -1,14 +1,19 @@
 <main>
     <h2>Profile</h2>
     <div class="profile-list">
-        <div class="user-card">
-            <div class="product-img">
+        <div class="profile-card">
+            <div class="profile-img">
                 <img src="https://fakeimg.pl/200x200/ff0000/000">
             </div>
-            <div class="user-info">
-                <div class="user-username">Username : {{user.username}}</div>
-                <div class="user-email">Email: {{user.email}}</div>
-            </div>
+            
+            <div class="profile-edit">{{user.username}}</div>
+            <div class="profile-delete">{{user.email}}</div>
         </div>
+        {{#if  userPosts}}
+            {{#each userPosts}}
+                {{> profileCard this}}
+            {{/each}}
+        {{/if}}
     </div>
+    
 </main>

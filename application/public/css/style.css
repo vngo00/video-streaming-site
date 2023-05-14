@@ -132,16 +132,17 @@ form{
   display:none;
 }
 
-
+/* 
 div img {
   height: 100%;
   width: 100%;
-}
+} */
 
 p img {
   height:5%;
   width:5%;
 }
+
 
 .product-list{
   display:grid;
@@ -173,14 +174,18 @@ p img {
   padding:10px;
   gap:10px;
   grid-auto-rows: minmax(200px, 1fr);
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 
 .user-card {
   display:grid;
   grid-template-rows: 80% 20%;
   grid-template-areas: 
-  "image info";
+  "image2 info";
+}
+
+.user-img {
+  grid-area: image2;
 }
 
 .user-info {

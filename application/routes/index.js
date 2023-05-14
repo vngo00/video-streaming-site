@@ -20,9 +20,6 @@ router.get('/postvideo', function(req, res){
   res.render('postvideo', {title:'postvideo'});
 });
 
-router.get('/viewpost/:id(\\d+)', function(req, res){
-  res.render('viewpost', {title:`View Post ${req.params.id}`});
-});
 
 
 
