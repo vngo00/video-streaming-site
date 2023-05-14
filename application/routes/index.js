@@ -4,8 +4,9 @@ const {getRecentPosts} = require('../middleware/posts');
 
 /* GET home page. */
 router.get('/', getRecentPosts, function(req, res, next) {
-  console.log(res.locals.posts);
  // res.render('index', { title: 'Upipe', name:"[Insert your name here]" , js:["index.js"]});
+  // console.log(res.locals.searchPosts);
+  console.log(req.query);
   res.render('index', {title:'Upipe'});
 });
 

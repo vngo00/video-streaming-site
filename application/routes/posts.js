@@ -4,7 +4,8 @@ var multer = require('multer');
 var db = require('../conf/database');
 const { makeThumbnail,
      getPostById,
-     deletePostbyId } = require('../middleware/posts');
+     deletePostbyId,
+     getSearchPosts } = require('../middleware/posts');
 const { isLoggedIn } = require('../middleware/auth');
 
 const storage = multer.diskStorage({
@@ -61,8 +62,13 @@ router.post('/delete',isLoggedIn,deletePostbyId, function(req,res,next){
     var {userId} = req.session.user;
     return res.redirect(`/users/profile/${userId}`);
 });
-router.get('/search', function(req,res,next){
 
+router.get('/search',getSearchPosts, function(req,res,next){
+    console.log(req.query);
+    console.log(res.locals.searchPosts);
+    //res.end();
+    //return res.redirect('/');
+    res.render('index');
 });
 
 

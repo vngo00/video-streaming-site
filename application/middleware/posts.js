@@ -52,7 +52,7 @@ module.exports = {
                 next(error);
             });
                 }
-        },
+    },
     getPostsForUserById: async function(req,res,next){
         var {userId} = req.session.user;
 
@@ -127,6 +127,41 @@ module.exports = {
                 });
             }else{
                 new Error("Unable to delete post");
+            }
+        } catch(error){
+            next(error);
+        }
+    },
+    getSearchPosts: async function(req,res,next){
+        var {search} = req.query;
+        try{
+            [rows, fields] = await db.execute(
+                `SELECT * FROM posts where title=?;`,[search]
+            );
+            if(rows && rows.length){
+                req.session.save(function(error){
+                    if(error) next(error);
+                    res.locals.searchPosts = rows;
+                    res.locals.posts = rows;
+                    next();
+                });
+                
+            }
+            else{
+                [rows, field] = await db.execute(
+                    `SELECT * FROM posts ORDER BY createdAt limit 5;`
+                );
+                if(rows && rows.length){
+                    req.session.save(function(error){
+                        if(error) next(error);
+                        res.locals.searchPosts = rows;
+                        res.locals.posts = rows;
+                        next();
+                    });
+                }
+                else{
+                    new Error("can't find posts");
+                }
             }
         } catch(error){
             next(error);
