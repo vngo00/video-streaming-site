@@ -203,6 +203,8 @@ p img {
 }
 
 .profile-card {
+  padding:10px;
+  gap:10px;
   display:grid;
   grid-template-rows: 80% 20%;
   grid-template-areas: 
@@ -228,4 +230,14 @@ p img {
 
 #flash-message::content {
   display: none;
+}
+
+
+
+.my-div {
+  width: 200px;
+  height: 100px;
+  background-color: red;
+  display: block;
+  margin: 20px;
 }

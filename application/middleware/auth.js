@@ -31,16 +31,19 @@ module.exports = {
             `select id,username,password,email from users where username=?;`,
             [username]
           );
-          var user = resultObject[0];
-          var passwordMatch = await bcrypt.compare(password, user.password);
-          if (resultObject && resultObject.length == 1 && passwordMatch){
-            req.session.user = {
-              userId: user.id,
-              email: user.email,
-              username: user.username
-            };
-            req.flash("success", `Welcome: ${user.username}`);
-            next();
+          
+          if(resultObject && resultObject.length == 1){
+            var user = resultObject[0];
+            var passwordMatch = await bcrypt.compare(password, user.password);
+            if (passwordMatch){
+              req.session.user = {
+                userId: user.id,
+                email: user.email,
+                username: user.username
+              };
+              req.flash("success", `Welcome: ${user.username}`);
+              next();
+            }
           }
           else {
             req.flash("error", `Log In Failed: Invalid username/password`);

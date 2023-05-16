@@ -7,6 +7,7 @@ router.get('/', getRecentPosts, function(req, res, next) {
  // res.render('index', { title: 'Upipe', name:"[Insert your name here]" , js:["index.js"]});
   // console.log(res.locals.searchPosts);
   console.log(req.query);
+  console.log(res.locals.posts);
   res.render('index', {title:'Upipe'});
 });
 

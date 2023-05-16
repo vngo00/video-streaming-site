@@ -5,7 +5,9 @@ var db = require('../conf/database');
 const { makeThumbnail,
      getPostById,
      deletePostbyId,
-     getSearchPosts } = require('../middleware/posts');
+     getSearchPosts,
+     getCommentsForPostById,
+     uploadPost } = require('../middleware/posts');
 const { isLoggedIn } = require('../middleware/auth');
 
 const storage = multer.diskStorage({
@@ -26,35 +28,12 @@ router.post(
     isLoggedIn,
     upload.single("uploadVideo"),
     makeThumbnail,
-    async function(req,res,next){
-    var {title, description} = req.body;
-    var {path, thumbnail} = req.file;
-    var { userId} = req.session.user;
-    try {
-        var [insertResult, _] = await db.execute(
-            `INSERT INTO posts (title, description, video, thumbnail,
-            fk_userId) VALUE (?,?,?,?,?)`,
-            [title, description, path, thumbnail, userId]
-        );
-        if (insertResult && insertResult.affectedRows){
-            req.flash("success", "Your post was created!");
-            return req.session.save(function(error){
-                if(error) next(error);
-                return res.redirect(`/`);
-            });
-        } else {
-            next(new Error('Post could not be created'));
-        }
-    }
-    catch(error){
-        next(error);
-    }
-
+    uploadPost,
+    function(req,res,next){
+        return res.redirect(`/`);
 });
 
-router.get('/:id(\\d+)',getPostById, function(req, res){
-    console.log(req.params);
-    console.log(res.locals.currentPost);
+router.get('/:id(\\d+)',getPostById,getCommentsForPostById, function(req, res){
     res.render('viewpost', {title:`View Post ${req.params.id}`});
 });
 
@@ -64,10 +43,6 @@ router.post('/delete',isLoggedIn,deletePostbyId, function(req,res,next){
 });
 
 router.get('/search',getSearchPosts, function(req,res,next){
-    console.log(req.query);
-    console.log(res.locals.searchPosts);
-    //res.end();
-    //return res.redirect('/');
     res.render('index');
 });
 

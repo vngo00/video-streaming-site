@@ -1,18 +1,20 @@
 <div class="profile-card">
             <div class="profile-img">
-                <img src="/{{thumbnail}}">
+                <a href="/posts/{{id}}">
+                    <img src="/{{thumbnail}}">
+                </a>
             </div>
             <div class="profile-edit">
-                <form 
+                <form class="form-inline"
                 id="delete-post-form" 
                 method="POST" 
                 action="/posts/delete"
                 enctype="application/x-www-form-urlencoded">
                 <input type="hidden" id="post-id" name="id" value="{{id}}">
-                <button class="btn btn-danger"type="submit">Delete Post</button>
+                <button class="btn btn-danger"type="submit">Delete</button>
                 </form>
             </div>
             <div class="profile-delete">
-                {{thumbnail}} 
+                {{title}} 
             </div>
 </div>

@@ -1,10 +1,50 @@
-<main>
-    <h2>Post</h2>
-    <ul>
-        <li>post title</li>
-        <li>author</li>
-        <li>creation time</li>
-        <li><img src="https://fakeimg.pl/350x200/ff0000/000"></li>
-        <li>comment</li>
-    </ul>
-</main>
+
+<div class="container pt-5">
+    
+    <div class="embed-responsive embed-responsive-16by9">
+      <video class="embed-responsive-item" controls>
+        <source src="/{{currentPost.video}}" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <h1>{{currentPost.title}}</h1>
+    
+
+    {{! comment section}}
+    <section >
+            <div class="container my-5 py-5">
+              <div class="row d-flex justify-content-center">
+                <div class="col-md-12 col-lg-10">
+                  <div class="card text-dark">
+                    <h4 class="mb-0">Recent comments</h4>
+                    <div class="bg-light p-2">
+                      <form action="/comments/create"
+                      method="POST"
+                      enctype="application/x-www-form-urlencoded">
+                      <div class="d-flex flex-row align-items-start">
+                          <i class='fas fa-comment' style='font-size:48px;'></i>
+                          <textarea type="text" class="form-control ml-1 shadow-none textarea" name="text"></textarea>
+                      </div>
+                      <div class="mt-2 text-right">
+                          <input type="hidden" name="postId" value="{{currentPost.id}}">
+                          <button  class="btn btn-primary btn-sm shadow-none" type="submit">Post comment</button>
+                      </div>
+                      </form>
+                    </div>
+                  {{#if comments}}
+                    {{#each comments}}
+                      {{> commentCard this}}
+                    {{/each}}
+
+                  {{/if}}
+
+
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        {{! end comment section}}
+
+</div>

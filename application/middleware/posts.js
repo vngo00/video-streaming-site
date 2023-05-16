@@ -92,7 +92,27 @@ module.exports = {
             next(error)
         }
     },
-    getCommentsForPostById: function(req,res,next){},
+    getCommentsForPostById: async function(req,res,next){
+        var {id} = req.params;
+
+        try {
+            [rows, fields] = await db.execute(
+                `SELECT username, c.createAt, text from comments c INNER JOIN users u ON c.fk_authorId = u.id
+                and fk_postId=? ORDER BY c.createAt DESC;`,[id]
+            );
+            if (rows){
+                res.locals.comments = rows;
+                next();
+            }
+            else{
+                new Error("unable to retrieve comments");
+            }
+        }
+        catch (error){
+            next(error);
+        }
+
+    },
     getRecentPosts: async function(req,res,next){
 
         try{
@@ -166,5 +186,29 @@ module.exports = {
         } catch(error){
             next(error);
         }
+    },
+    uploadPost: async function(req,res,next){
+        var {title, description} = req.body;
+    var {path, thumbnail} = req.file;
+    var { userId} = req.session.user;
+    try {
+        var [insertResult, _] = await db.execute(
+            `INSERT INTO posts (title, description, video, thumbnail,
+            fk_userId) VALUE (?,?,?,?,?)`,
+            [title, description, path, thumbnail, userId]
+        );
+        if (insertResult && insertResult.affectedRows){
+            req.flash("success", "Your post was created!");
+            return req.session.save(function(error){
+                if(error) next(error);
+                next();
+            });
+        } else {
+            next(new Error('Post could not be created'));
+        }
+    }
+    catch(error){
+        next(error);
+    }
     }
 }

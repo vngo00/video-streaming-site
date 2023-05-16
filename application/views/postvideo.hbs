@@ -1,39 +1,36 @@
-
-    <main>
-        <div class="center-form">
-            <form 
-            method="POST"
-            action="/posts/create"
-            enctype="multipart/form-data">
-                <h2>Upload your video here</h2>
-                <div>
-                    <label for="postTitle">Post Title</label>
-                </div>
-                <div>
-                    <input type="text" name="title" placeholder="Post Title">
-                </div>
-                <div>
-                    <label for="description">Post Description</label>
-                </div>
-                <div>
-                    <input name="description" id="description" placeholder="Post Description" required></input>
-                </div>
-                <div>
-                    <label for="">Upload Video</label>
-                </div>
-                <div>
-                    <input type="file" accept="video/*" name="uploadVideo" required>
-                </div>
-                    
-                <div>
-                    <input type="checkbox" name="policy" required>
-                </div>
-                <div>
-                    <label for="">I agree with <a href="">Aceptable Use Policy</a></label>
-                </div>
-                <div>
-                    <button class="submit-button" type="submit">Sign up</button>
-                </div>
-            </form>
-        </div>
-    </main>
+<main>
+    <div class="container d-flex justify-content-center">
+        <form 
+        method="POST"
+        action="/posts/create"
+        enctype="multipart/form-data">
+            <h2>Upload your video here</h2>
+            <div>
+                <label for="postTitle">Post Title</label>
+            </div>
+            <div>
+                <input class="input-group" type="text" name="title" placeholder="Post Title">
+            </div>
+            <div>
+                <label for="description">Post Description</label>
+            </div>
+            <div>
+                <input class="input-group" name="description" id="description" placeholder="Post Description" required></input>
+            </div>
+            <div>
+                <label for="">Upload Video</label>
+            </div>
+            <div>
+                <input type="file" accept="video/*" name="uploadVideo" required>
+            </div>
+                
+            <div class="checkbox-group">
+                <input type="checkbox" name="policy" required>
+                <label for="">I agree with <a href="">Aceptable Use Policy</a></label>
+            </div>
+            <div>
+                <button class="submit-button" type="submit">Upload</button>
+            </div>
+        </form>
+    </div>
+</main>

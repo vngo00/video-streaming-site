@@ -45,7 +45,6 @@ router.post('/register',usernameCheck,
  * viewing profile
  */
 router.get('/profile/:id(\\d+)',isLoggedIn,isMyProfile,getPostsForUserById, function(req, res){
-  //console.log(res.locals.userPosts);
   res.render('profile', {title:'profile'});
 });
 /**
